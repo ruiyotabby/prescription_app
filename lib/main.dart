@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Slidable(
+                        key: const ValueKey(0),
                         endActionPane: ActionPane(
                           motion: const DrawerMotion(),
                           dismissible: DismissiblePane(onDismissed: () {}),
