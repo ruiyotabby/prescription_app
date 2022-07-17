@@ -31,10 +31,25 @@ class MyApp extends StatelessWidget {
                     SizedBox(height: 90),
                     Container(
                       height: 100,
-                      width: 300,
+                      width: 330,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Slidable(
+                        endActionPane: ActionPane(
+                          motion: const DrawerMotion(),
+                          dismissible: DismissiblePane(onDismissed: () {}),
+                          children: const [
+                            SlidableAction(
+                              onPressed: null,
+                              backgroundColor: Colors.red,
+                              icon: Icons.check,
+                              label: 'Done',
+                            ),
+                          ],
+                        ),
+                        child: const ListTile(),
                       ),
                     ),
                   ],
