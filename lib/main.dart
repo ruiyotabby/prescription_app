@@ -36,22 +36,6 @@ class MyApp extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Slidable(
-                        key: const ValueKey(0),
-                        endActionPane: ActionPane(
-                          motion: const DrawerMotion(),
-                          dismissible: DismissiblePane(onDismissed: () {}),
-                          children: const [
-                            SlidableAction(
-                              onPressed: null,
-                              backgroundColor: Colors.red,
-                              icon: Icons.check,
-                              label: 'Done',
-                            ),
-                          ],
-                        ),
-                        child: const ListTile(),
-                      ),
                     ),
                   ],
                 ),
