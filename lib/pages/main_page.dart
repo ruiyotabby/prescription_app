@@ -45,7 +45,7 @@ class _MainPageState extends State<MainPage> {
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
@@ -73,14 +73,17 @@ class _MainPageState extends State<MainPage> {
                             Expanded(
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 8),
+                                    vertical: 2, horizontal: 2),
                                 child: Builder(builder: ((context) {
                                   return ListView.builder(
                                       itemCount: 3,
                                       itemBuilder: ((context, index) {
-                                        return Card(
+                                        return const Card(
                                           color: Colors.white,
-                                          child: Slidable(child: ListTile()),
+                                          child: Slidable(
+                                              child: ListTile(
+                                            tileColor: Colors.white,
+                                          )),
                                         );
                                       }));
                                 })),
