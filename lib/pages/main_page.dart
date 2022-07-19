@@ -41,11 +41,11 @@ class _MainPageState extends State<MainPage> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(20),
-                  child: Row(
+                  child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
@@ -57,36 +57,46 @@ class _MainPageState extends State<MainPage> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                          )
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 240),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  Icons.add_circle,
+                                  color: Color.fromARGB(255, 250, 218, 218),
+                                  size: 30,
+                                  
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 250, top: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                      SizedBox(height: 20),
+                      Card(
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.add_circle,
-                              color: Color.fromARGB(255, 250, 218, 218),
-                              size: 30,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 2, horizontal: 2),
-                                child: Builder(builder: ((context) {
-                                  return ListView.builder(
-                                      itemCount: 3,
-                                      itemBuilder: ((context, index) {
-                                        return const Card(
-                                          color: Colors.white,
-                                          child: Slidable(
-                                              child: ListTile(
-                                            tileColor: Colors.white,
-                                          )),
-                                        );
-                                      }));
-                                })),
+                            Container(
+                              height: 100,
+                              width: 100,
+                              child: Slidable(
+                                key: ValueKey(0),
+                                endActionPane: ActionPane(
+                                  motion: DrawerMotion(),
+                                  children: [
+                                    SlidableAction(
+                                        icon: Icons.check,
+                                        label: 'Done',
+                                        foregroundColor: Colors.white,
+                                        backgroundColor: Colors.red,
+                                        onPressed: ((context) {}))
+                                  ],
+                                ),
+                                child: ListTile(),
                               ),
                             ),
                           ],
