@@ -9,12 +9,19 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  String dropdown_value = '2020';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Stack(
           children: [
+            DropdownButton(
+              value: dropdown_value,
+              icon: Icon(Icons.arrow_drop_down_outlined),
+              onChanged: (value) {},
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
