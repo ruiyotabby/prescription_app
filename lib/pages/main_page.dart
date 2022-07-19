@@ -20,7 +20,16 @@ class _MainPageState extends State<MainPage> {
             DropdownButton(
               value: dropdown_value,
               icon: Icon(Icons.arrow_drop_down_outlined),
+              elevation: 10,
+              style: TextStyle(color: Colors.blue[900]),
               onChanged: (value) {},
+              items: <String>['2020', '2021', '2022', '2023']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
