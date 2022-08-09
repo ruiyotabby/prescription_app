@@ -10,11 +10,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var _height = MediaQuery.of(context).size.height;
-    var _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        color: Colors.pink[100],
+        color: const Color.fromARGB(255, 252, 215, 228),
         height: _height,
         width: _width,
         child: Column(
@@ -48,23 +48,75 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: _height * 0.04),
             Container(
-              decoration: BoxDecoration(
-                color: Colors.blue[900],
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 1, 47, 116),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20)),
               ),
-              height: _height * 0.75,
+              height: _height * 0.72,
               width: _width,
               child: Column(
                 children: [
+                  SizedBox(height: _height * 0.03),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('To Take'),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.add_circle))
+                      const Text(
+                        'To take',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 252, 215, 228),
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(width: _width * 0.67),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.add_circle,
+                          color: Color.fromARGB(255, 252, 215, 228),
+                          size: 28,
+                        ),
+                      )
                     ],
                   ),
+                  ListView.builder(
+                      padding:
+                          const EdgeInsets.only(left: 10, right: 10, top: 10),
+                      shrinkWrap: true,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          height: _height * 0.17,
+                          child: Card(
+                            color: Colors.white,
+                            child: Row(
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(
+                                      Icons.medication,
+                                      size: 50,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: _width * 0.05),
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        SizedBox(height: _height * 0.01),
+                                        const Text('data'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      })
                 ],
               ),
             ),
