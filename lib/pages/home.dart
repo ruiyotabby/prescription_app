@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prescription_app/pages/add.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -71,7 +72,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(width: _width * 0.67),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Add()),
+                            );
+                          });
+                        },
                         icon: const Icon(
                           Icons.add_circle,
                           color: Color.fromARGB(255, 252, 215, 228),
@@ -81,42 +89,45 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   ListView.builder(
-                      padding:
-                          const EdgeInsets.only(left: 10, right: 10, top: 10),
-                      shrinkWrap: true,
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return SizedBox(
-                          height: _height * 0.17,
-                          child: Card(
-                            color: Colors.white,
-                            child: Row(
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(
-                                      Icons.medication,
-                                      size: 50,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: _width * 0.05),
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(height: _height * 0.01),
-                                        const Text('data'),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, top: 10),
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        height: _height * 0.17,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Icon(
+                                    Icons.medication,
+                                    size: 50,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: _width * 0.05),
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      SizedBox(height: _height * 0.01),
+                                      const Text('data'),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        );
-                      })
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
