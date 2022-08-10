@@ -15,7 +15,8 @@ class _HomePageState extends State<HomePage> {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        color: const Color.fromARGB(255, 252, 215, 228),
+        // color: Color.fromARGB(255, 253, 222, 233),
+        color: Theme.of(context).colorScheme.primary,
         height: _height,
         width: _width,
         child: Column(
@@ -49,9 +50,9 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: _height * 0.04),
             Container(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 1, 47, 116),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondary,
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20)),
               ),
@@ -63,10 +64,10 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'To take',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 252, 215, 228),
+                          color: Theme.of(context).colorScheme.primary,
                           fontSize: 16,
                         ),
                       ),
@@ -76,13 +77,14 @@ class _HomePageState extends State<HomePage> {
                           setState(() {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Add()),
+                              MaterialPageRoute(
+                                  builder: (context) => const Add()),
                             );
                           });
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.add_circle,
-                          color: Color.fromARGB(255, 252, 215, 228),
+                          color: Theme.of(context).colorScheme.primary,
                           size: 28,
                         ),
                       )
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
-                          color: Colors.white,
+                          // color: Colors.white,
                           child: Row(
                             children: [
                               Column(
