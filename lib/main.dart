@@ -16,7 +16,6 @@ ThemeData _buildApp() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
-    primary: const Color.fromARGB(255, 253, 222, 233),
-    secondary: const Color.fromARGB(255, 1, 47, 116),
-  ));
+          primary: const Color(0xFFF4D9DE),
+          secondary: const Color(0xFF0A26AB)));
 }
