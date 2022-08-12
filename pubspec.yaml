@@ -39,6 +39,7 @@ dependencies:
   sqflite:
   path:
   flutter_alarm_clock:
+  flutter_time_picker_spinner:
 
 dev_dependencies:
   flutter_test:
