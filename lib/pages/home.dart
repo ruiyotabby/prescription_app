@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:prescription_app/pages/add.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +15,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
+
+    final _now = DateTime.now();
+
     return Scaffold(
       body: ListView(
         physics: const NeverScrollableScrollPhysics(),
@@ -25,8 +30,8 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Row(
-                  children: const [
-                    Text('First Row'),
+                  children: [
+                    Text(DateFormat('MMM, yyyy').format(_now)),
                   ],
                 ),
                 SizedBox(height: _height * 0.04),
@@ -35,9 +40,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text('DATE'),
-                        Text('DAY'),
+                      children: [
+                        Text('${_now.day}'),
+                        Text(DateFormat('EEEE').format(_now)),
                       ],
                     ),
                     Column(
@@ -104,34 +109,49 @@ class _HomePageState extends State<HomePage> {
                               ),
                               child: SizedBox(
                                 height: _height * 0.17,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  color: Colors.white,
-                                  child: Row(
+                                child: Slidable(
+                                  endActionPane: ActionPane(
+                                    motion: const DrawerMotion(),
                                     children: [
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          Icon(
-                                            Icons.medication,
-                                            size: 50,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: _width * 0.05),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              SizedBox(height: _height * 0.01),
-                                              const Text('data'),
-                                            ],
-                                          ),
-                                        ],
+                                      SlidableAction(
+                                        onPressed: (context) {},
+                                        icon: Icons.check,
+                                        backgroundColor: Colors.red,
+                                        borderRadius: BorderRadius.circular(5),
                                       ),
                                     ],
+                                  ),
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    color: Colors.white,
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: const [
+                                            Icon(
+                                              Icons.medication,
+                                              size: 50,
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(width: _width * 0.05),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                    height: _height * 0.01),
+                                                const Text('data'),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
