@@ -40,6 +40,7 @@ dependencies:
   path:
   flutter_alarm_clock:
   flutter_time_picker_spinner:
+  intl:
 
 dev_dependencies:
   flutter_test:
