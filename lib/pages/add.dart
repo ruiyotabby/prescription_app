@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 
 class Add extends StatelessWidget {
   const Add({Key? key}) : super(key: key);
@@ -8,13 +7,7 @@ class Add extends StatelessWidget {
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
-    // Future<TimeOfDay?> selectedItem = showTimePicker(
-    //   context: context,
-    //   initialTime: TimeOfDay.now(),
-    //   builder: (context, child) {
-    //     return Directionality(textDirection: TextDirection.ltr, child: child!);
-    //   },
-    // );
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -113,15 +106,10 @@ class Add extends StatelessWidget {
                 ),
                 SizedBox(height: _height * 0.04),
                 const Text(
-                  'Select the time you took the medicine to calculate your next intake',
+                  'Tap below to Select the time you took the medicine to calculate your next intake',
                   style: TextStyle(color: Color(0xFFF4D9DE)),
                 ),
-                // SizedBox(
-                //   width: _width * 0.7,
-                //   height: _height * 0.3,
-                //   child: TimeSpinner(),
-                // ),
-                TextField()
+                const TimeButton()
               ],
             ),
           ),
@@ -131,21 +119,39 @@ class Add extends StatelessWidget {
   }
 }
 
-class TimeSpinner extends StatelessWidget {
-  const TimeSpinner({
+class TimeButton extends StatefulWidget {
+  const TimeButton({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<TimeButton> createState() => _TimeButtonState();
+}
+
+class _TimeButtonState extends State<TimeButton> {
+  @override
   Widget build(BuildContext context) {
-    return TimePickerSpinner(
-        time: DateTime.now(),
-        is24HourMode: false,
-        itemHeight: 45,
-        spacing: 20,
-        onTimeChange: (p0) {},
-        normalTextStyle: TextStyle(fontSize: 27, color: Colors.grey[800]),
-        highlightedTextStyle:
-            const TextStyle(fontSize: 32, color: Colors.black));
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
+
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xFF0A26AB),
+        onPrimary: const Color(0xFFF4D9DE),
+        fixedSize: Size(_width, _height * 0.03),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(69),
+        ),
+      ),
+      child: const Text('Select time'),
+      onPressed: () {
+        setState(() {
+          Future<TimeOfDay?> selectedItem = showTimePicker(
+            context: context,
+            initialTime: TimeOfDay.now(),
+          );
+        });
+      },
+    );
   }
 }
